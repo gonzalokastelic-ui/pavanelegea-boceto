@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vista previa · Sitio web Pavanel Egea Propiedades</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="img/isotipo.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <style>
+    :root {
+      --navy: #36475a; --navy-950: #161f29; --navy-900: #1d2834;
+      --sand: #d4b69c; --sand-100: #f3ebe3; --sand-ink: #86644a;
+      --paper: #f5f6f8; --paper-2: #e9edf1; --line: #d9dee4;
+      --ink: #1d2834; --muted: #586776;
+      --font-display: "Urbanist", system-ui, sans-serif;
+      --font-body: "Source Sans 3", system-ui, sans-serif;
+      --gutter: clamp(16px, 4vw, 48px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: -.015em; line-height: 1.15; }
+    p { margin: 0; }
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* Barra superior */
+    .top { background: var(--navy-950); color: #fff; }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; padding-block: 10px; }
+    .top__brand { display: flex; align-items: center; gap: 14px; }
+    .top__brand img { height: 40px; width: auto; }
+    .top__tag { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 4px; background: var(--sand); color: var(--navy-950); font-weight: 600; font-size: .9rem; }
+    .top__meta { font-size: .92rem; color: rgba(255,255,255,.75); }
+
+    /* Intro */
+    .intro { padding: clamp(40px, 6vw, 72px) 0 32px; }
+    .intro h1 { font-size: clamp(2rem, 4vw, 3rem); max-width: 22ch; }
+    .intro p { margin-top: 14px; max-width: 62ch; color: var(--muted); font-size: 1.1rem; }
+    .disclaimer { margin-top: 24px; max-width: 760px; padding: 20px 24px; border-radius: 8px; background: var(--sand-100); box-shadow: inset 0 0 0 1px rgba(134,100,74,.35); }
+    .disclaimer h2 { font-size: 1.2rem; }
+    .disclaimer ul { margin: 12px 0 0; padding-left: 20px; }
+    .disclaimer li { margin: 4px 0; }
+    .disclaimer p { margin-top: 12px; font-weight: 600; color: var(--ink); }
+
+    /* Visor */
+    .viewer { padding-bottom: 56px; }
+    .viewer__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .tabs { display: inline-flex; padding: 4px; border-radius: 10px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+    .tabs button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font-weight: 600; }
+    .tabs button[aria-selected="true"] { background: var(--navy); color: #fff; }
+    .viewer__open { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--navy); text-decoration: underline; text-decoration-color: var(--sand); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+    .stage { background: var(--paper-2); border-radius: 12px; padding: clamp(12px, 2.5vw, 28px); display: flex; justify-content: center; overflow: hidden; }
+    .screen { width: 100%; }
+    .screen__label { display: flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px 10px 0 0; background: var(--navy-950); color: rgba(255,255,255,.75); font-size: .85rem; }
+    .screen__frame { position: relative; overflow: hidden; border-radius: 0 0 10px 10px; background: #fff; box-shadow: 0 20px 50px -24px rgba(22,31,41,.45); }
+    .screen__frame iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: #fff; }
+
+    .phone { width: 100%; max-width: 410px; }
+    .phone__body { position: relative; border-radius: 44px; padding: 12px; background: var(--navy-950); box-shadow: 0 24px 60px -24px rgba(22,31,41,.6); }
+    .phone__frame { position: relative; overflow: hidden; border-radius: 34px; background: #fff; }
+    .phone__frame iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; }
+    [hidden] { display: none !important; }
+
+    /* Bloques informativos */
+    .info { padding: 56px 0 72px; border-top: 1px solid var(--line); background: #fff; }
+    .info__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .info h2 { font-size: 1.45rem; margin-bottom: 14px; }
+    .info ul, .info ol { margin: 0; padding: 0; list-style: none; }
+    .info li { padding: 10px 0; border-top: 1px solid var(--line); }
+    .info li b { display: block; font-weight: 600; }
+    .info li span { color: var(--muted); font-size: .96rem; }
+    .info ol { counter-reset: paso; }
+    .info ol li { counter-increment: paso; display: grid; grid-template-columns: 28px 1fr; }
+    .info ol li::before { content: counter(paso); font-family: var(--font-display); font-weight: 700; color: var(--sand-ink); }
+
+    .feedback { padding: 48px 0 64px; background: var(--navy); color: #fff; }
+    .feedback .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .feedback h2 { font-size: clamp(1.5rem, 3vw, 2rem); max-width: 26ch; }
+    .feedback p { margin-top: 8px; color: rgba(255,255,255,.82); max-width: 56ch; }
+    .foot { padding: 20px 0 calc(20px + env(safe-area-inset-bottom)); background: var(--navy-950); color: rgba(255,255,255,.65); font-size: .88rem; }
+
+    @media (max-width: 900px) {
+      .info__grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <div class="top__brand">
+        <img src="img/logo-horizontal-light.png" alt="Pavanel Egea Propiedades" width="1284" height="500">
+        <span class="top__tag">Boceto</span>
+      </div>
+      <p class="top__meta">Propuesta de sitio web · Versión 1 · <span id="fecha">13/11/2026</span></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="wrap">
+        <h1>Este es el boceto de tu nueva web.</h1>
+        <p>Muestra la estructura y el recorrido: qué secciones tiene, en qué orden y cómo se navega. Podés tocar todo: los filtros de propiedades, las fichas, los desarrollos y el formulario de contacto.</p>
+        <div class="disclaimer" role="note" aria-labelledby="disc-title">
+          <h2 id="disc-title">Importante: esto es un boceto, no el diseño final.</h2>
+          <ul>
+            <li><b>Tipografía:</b> provisoria. La final es la del manual de marca.</li>
+            <li><b>Colores:</b> en gris a propósito. En el diseño se aplican el azul y el arena de la marca.</li>
+            <li><b>Logo y fotos:</b> son cajas de referencia. Van el logo oficial y las fotos reales.</li>
+            <li><b>Textos, precios y propiedades:</b> de ejemplo, solo para mostrar cómo se ve cada parte.</li>
+            <li><b>Tamaños, espacios y detalles visuales:</b> se definen en la etapa de diseño.</li>
+          </ul>
+          <p>Lo que sí estamos revisando ahora: qué secciones tiene la web, en qué orden van y cómo se navega.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="viewer" aria-label="Vista previa del sitio">
+      <div class="wrap">
+        <div class="viewer__bar">
+          <div class="tabs" role="tablist" aria-label="Tipo de pantalla">
+            <button role="tab" id="tab-desk" aria-selected="true" aria-controls="panel-desk">Computadora</button>
+            <button role="tab" id="tab-mob" aria-selected="false" aria-controls="panel-mob" tabindex="-1">Celular</button>
+          </div>
+          <a class="viewer__open" href="boceto.html" target="_blank" rel="noopener">Abrir el boceto en pantalla completa</a>
+        </div>
+
+        <div class="stage">
+          <div class="screen" id="panel-desk" role="tabpanel" aria-labelledby="tab-desk">
+            <div class="screen__label">Boceto en computadora · no es el diseño final</div>
+            <div class="screen__frame" data-w="1440" data-h="900">
+              <iframe src="boceto.html" title="Boceto del sitio en vista de computadora" width="1440" height="900" loading="eager"></iframe>
+            </div>
+          </div>
+          <div class="phone" id="panel-mob" role="tabpanel" aria-labelledby="tab-mob" hidden>
+            <div class="phone__body">
+              <div class="phone__frame" data-w="390" data-h="844">
+                <iframe src="about:blank" data-src="boceto.html" title="Boceto del sitio en vista de celular" width="390" height="844"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info">
+      <div class="wrap info__grid">
+        <div>
+          <h2>Qué incluye</h2>
+          <ul>
+            <li><b>Inicio</b><span>Presenta la inmobiliaria y el estudio jurídico, con acceso directo a las propiedades.</span></li>
+            <li><b>Propiedades</b><span>Casas y departamentos en venta y alquiler, con filtros por tipo y operación, ficha con galería y botón de consulta.</span></li>
+            <li><b>Desarrollos</b><span>Proyectos en construcción con su avance de obra y próximos lanzamientos, cada uno con su ficha.</span></li>
+            <li><b>Estudio jurídico</b><span>Servicios legales y acceso a consulta.</span></li>
+            <li><b>Contacto</b><span>WhatsApp, Instagram, email y formulario cuyas consultas llegan por mail.</span></li>
+            <li><b>Adaptada a celular</b><span>Con botón de WhatsApp siempre visible.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Qué necesitamos de ustedes</h2>
+          <ul>
+            <li><b>Fotos</b><span>De las propiedades, los desarrollos y, si quieren, del equipo o la oficina.</span></li>
+            <li><b>Listado de propiedades</b><span>Tipo, operación, precio, zona, ambientes, m² y características de cada una.</span></li>
+            <li><b>Datos de los desarrollos</b><span>Nombre, ubicación, unidades, avance de obra y fecha de entrega.</span></li>
+            <li><b>Textos del estudio jurídico</b><span>Servicios que ofrecen y cómo quieren presentarlos.</span></li>
+            <li><b>Contacto</b><span>Números de WhatsApp, email para el formulario y número de matrícula.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Próximos pasos</h2>
+          <ol>
+            <li><div><b>Revisión del boceto</b><span>Nos cuentan si la estructura les sirve y qué cambiarían.</span></div></li>
+            <li><div><b>Diseño</b><span>Aplicamos el manual de marca: colores, tipografías y estilo visual.</span></div></li>
+            <li><div><b>Carga de contenido</b><span>Sumamos fotos, propiedades y textos reales.</span></div></li>
+            <li><div><b>Publicación</b><span>Subimos la web a su dominio y probamos el formulario.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="feedback">
+      <div class="wrap">
+        <div>
+          <h2>¿Qué te parece la estructura?</h2>
+          <p>Contanos si las secciones y el orden te sirven, qué cambiarías y si falta algo. Con eso pasamos a la etapa de diseño.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">Boceto privado para revisión. No es el diseño final.</div>
+  </footer>
+
+  <script>
+    (() => {
+      // Escala el iframe para que la web se vea completa dentro de su marco
+      const fit = (frame) => {
+        const w = +frame.dataset.w, h = +frame.dataset.h;
+        const avail = frame.parentElement.clientWidth || w;
+        const s = Math.min(1, avail / w);
+        frame.style.height = `${Math.round(h * s)}px`;
+        const ifr = frame.querySelector("iframe");
+        ifr.style.transform = `scale(${s})`;
+      };
+      const frames = [...document.querySelectorAll("[data-w]")];
+      // Cada vista arranca desde el inicio de la web (sin recordar un scroll anterior)
+      document.querySelectorAll(".stage iframe").forEach((ifr) =>
+        ifr.addEventListener("load", () => {
+          try {
+            ifr.contentWindow.history.scrollRestoration = "manual";
+            ifr.contentWindow.scrollTo(0, 0);
+          } catch (e) { /* otro origen: se deja como está */ }
+        })
+      );
+      const fitAll = () => frames.forEach((f) => f.offsetParent && fit(f));
+      new ResizeObserver(fitAll).observe(document.body);
+      fitAll();
+
+      // Pestañas Computadora / Celular (flechas para cambiar)
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+      const select = (tab) => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", on);
+          t.tabIndex = on ? 0 : -1;
+          document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+        });
+        const lazy = document.querySelector(`#${tab.getAttribute("aria-controls")} iframe[data-src]`);
+        if (lazy && lazy.src === "about:blank") lazy.src = lazy.dataset.src;
+        fitAll();
+      };
+      tabs.forEach((t, i) => {
+        t.addEventListener("click", () => select(t));
+        t.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          const n = tabs[(i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+          n.focus(); select(n);
+        });
+      });
+
+      const d = new Date();
+      document.getElementById("fecha").textContent = d.toLocaleDateString("es-AR");
+    })();
+  </script>
+</body>
+</html>
